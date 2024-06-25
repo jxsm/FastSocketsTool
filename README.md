@@ -1,2 +1,3 @@
 # FastSocketsTool
-FastSocketsTool
+
+Quickly create socket connections
