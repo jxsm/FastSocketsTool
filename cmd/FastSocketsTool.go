@@ -1,11 +1,11 @@
 package main
 
 import (
-	"FastSocketsTool/pkg/client"
 	"FastSocketsTool/pkg/option"
+	"FastSocketsTool/pkg/start"
 )
 
 func main() {
 	operationOption := option.InitOperationOption()
-	client.Start(operationOption)
+	start.Start(operationOption)
 }

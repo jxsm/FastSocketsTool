@@ -1,25 +1,26 @@
 package option
 
+import "FastSocketsTool/prompt"
+
 type DefaultExamine struct {
 }
 
 // ExamineOperationOption Default check operation
 func (d DefaultExamine) ExamineOperationOption(info *OperationOption) bool {
-	isErr := false
 	if *info.ConnectionAddress == "" {
-		Remind("ConnectionUrlIsEmpty")
-		isErr = true
+		prompt.Prompt("connection_address_IsEmpty")
+		return true
 	}
 
 	if *info.Port == 0 {
-		Remind("PortIsEmpty")
-		isErr = true
+		prompt.Prompt("port_IsEmpty")
+		return true
 	}
 
 	if *info.Port >= 65536 {
-		Remind("PortIsOutOfRange")
-		isErr = true
+		prompt.Prompt("port_is_OutOfRange")
+		return true
 	}
 
-	return isErr
+	return false
 }

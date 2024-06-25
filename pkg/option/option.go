@@ -12,6 +12,7 @@ type OperationOption struct {
 	ConnectionAddress *string
 	Encode            *string
 	Port              *int
+	Server            *bool
 }
 
 type ExamineOperationOption interface {
@@ -29,6 +30,7 @@ func InitOperationOption() *OperationOption {
 	data.ConnectionAddress = flag.String("a", "", "Connection Url")
 	data.Encode = flag.String("e", "utf-8", "Encode")
 	data.Port = flag.Int("p", 0, "Port Number - 1 to 65535")
+	data.Server = flag.Bool("s", false, "Server Mode")
 	flag.Parse()
 	examineOperationOption(FactoryOption{}.NewExamineOperationOption(), data)
 	return data
