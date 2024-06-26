@@ -79,8 +79,9 @@ func (s *Client) monitorUserInput() {
 			prompt.Prompt("input_failure")
 			return
 		}
-		s.send([]byte(input))
-		fmt.Println("[client]:", input)
+		bytesArray := []byte(input)
+		s.send(bytesArray)
+		fmt.Print("[client]:", input)
 	}
 }
 
@@ -89,7 +90,6 @@ func (s *Client) monitorServerPrint() {
 		s.wg.Done()
 		_ = dial.Close()
 	}(s.dial)
-
 	for {
 		server, err := s.monitorServer()
 		if err != nil {
@@ -102,8 +102,7 @@ func (s *Client) monitorServerPrint() {
 			return
 		}
 		fmt.Print("[server]:", encodeString)
-		if server[len(server)-1] == 10 {
-			fmt.Println("换行")
+		if server[len(server)-1] != 10 {
 			fmt.Print("\n")
 		}
 	}

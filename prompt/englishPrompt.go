@@ -8,7 +8,7 @@ type EnglishPrompt struct {
 }
 
 func (c *EnglishPrompt) setPrompt() {
-	c.AddPrompt("connection_address_IsEmpty", "Connection address is empty use -a designation")
+	c.AddPrompt("connection_address_IsEmpty", "Connection address is empty use -h designation")
 	c.AddPrompt("port_IsEmpty", "Port is empty use -p designation")
 	c.AddPrompt("port_is_OutOfRange", "Port number is out of range, only between 1-65535")
 	c.AddPrompt("failed_to_connect_to_the_server", "Failed to connect to the server")

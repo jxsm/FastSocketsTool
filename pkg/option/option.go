@@ -26,11 +26,11 @@ func InitOperationOption() *OperationOption {
 	b := flag.Bool("u", false, "udp Mod")
 	data.ConnectionType = "tcp"
 
-	data.ConnectionAddress = flag.String("a", "", "Connection address")
+	data.ConnectionAddress = flag.String("h", "", "Connection address")
 	data.Encode = flag.String("e", "utf-8", " The encoding used at the time of sending")
 	data.Port = flag.Int("p", 0, "Port Number - 1 to 65535")
 	data.Server = flag.Bool("s", false, "Server Mode")
-	data.ServerEncode = flag.String("se", "utf-8", "The server-side information will be output through this encoding")
+	data.ServerEncode = flag.String("re", "utf-8", "The server-side information will be output through this encoding")
 	flag.Parse()
 	if *b {
 		data.ConnectionType = "udp"
