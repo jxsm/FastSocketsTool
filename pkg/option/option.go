@@ -13,6 +13,7 @@ type OperationOption struct {
 	Encode            *string
 	Port              *int
 	Server            *bool
+	ServerEncode      *string
 }
 
 type ExamineOperationOption interface {
@@ -24,14 +25,17 @@ func InitOperationOption() *OperationOption {
 	data := &OperationOption{}
 	b := flag.Bool("u", false, "udp Mod")
 	data.ConnectionType = "tcp"
+
+	data.ConnectionAddress = flag.String("a", "", "Connection address")
+	data.Encode = flag.String("e", "utf-8", " The encoding used at the time of sending")
+	data.Port = flag.Int("p", 0, "Port Number - 1 to 65535")
+	data.Server = flag.Bool("s", false, "Server Mode")
+	data.ServerEncode = flag.String("se", "utf-8", "The server-side information will be output through this encoding")
+	flag.Parse()
 	if *b {
 		data.ConnectionType = "udp"
 	}
-	data.ConnectionAddress = flag.String("a", "", "Connection Url")
-	data.Encode = flag.String("e", "utf-8", "Encode")
-	data.Port = flag.Int("p", 0, "Port Number - 1 to 65535")
-	data.Server = flag.Bool("s", false, "Server Mode")
-	flag.Parse()
+
 	examineOperationOption(FactoryOption{}.NewExamineOperationOption(), data)
 	return data
 }
