@@ -1,25 +1,15 @@
 # FastSocketsTool
 
 ---
-<div class="revealIcon">
+<div align="center">
     <img src="https://img.shields.io/github/go-mod/go-version/jxsm/FastSocketsTool" alt="go" />
     <img src="https://img.shields.io/github/license/jxsm/FastSocketsTool" alt="license">
     <img src="https://img.shields.io/github/last-commit/jxsm/FastSocketsTool" alt="commit">
 
-<style>
-    .revealIcon{
-        display: flex;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-    .revealIcon img:not(:first-child) {
-        margin-left: 10px;
-    }
 
-</style>
 </div>
 
-<p style="text-align: center">
+<p align="center">
   简体中文|
 <a href="../../README.md">English</a>
 </p>
