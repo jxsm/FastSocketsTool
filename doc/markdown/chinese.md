@@ -5,13 +5,15 @@
     <img src="https://img.shields.io/github/go-mod/go-version/jxsm/FastSocketsTool" alt="go" />
     <img src="https://img.shields.io/github/license/jxsm/FastSocketsTool" alt="license">
     <img src="https://img.shields.io/github/last-commit/jxsm/FastSocketsTool" alt="commit">
-
-
 </div>
 
 <p align="center">
   简体中文|
 <a href="../../README.md">English</a>
+</p>
+
+<p align="center">
+    <a href="Acknowledgments.md">致谢</a>
 </p>
 
 ---

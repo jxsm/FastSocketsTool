@@ -81,7 +81,7 @@ func (s *Client) monitorUserInput() {
 		}
 		bytesArray := []byte(input)
 		s.send(bytesArray)
-		fmt.Print("[client]:", input)
+		fmt.Print("[you]:", input)
 	}
 }
 

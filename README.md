@@ -13,6 +13,10 @@
 <a href="doc/markdown/chinese.md">简体中文</a>
 </p>
 
+<p align="center">
+    <a href="doc/markdown/Acknowledgments.md">Acknowledgments</a>
+</p>
+
 ---
 ## Introducing
 FastSocketsTool is a Socket utility based on the Go language, offering a range of 
