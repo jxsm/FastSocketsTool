@@ -1,0 +1,71 @@
+name: Go Cross Compile and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build for Multiple Platforms
+    runs-on: ubuntu-latest
+    env:
+      GO111MODULE: "on"
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.22
+
+    - name: Build for Linux
+      run: GOOS=linux GOARCH=amd64 go build -o bin/fst-linux cmd/fst.go
+
+    - name: Build for macOS
+      run: GOOS=darwin GOARCH=amd64 go build -o bin/fst-macos cmd/fst.go
+
+    - name: Build for Windows
+      run: GOOS=windows GOARCH=amd64 go build -o bin/fst-windows.exe cmd/fst.go
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ github.run_number }}
+        release_name: Release ${{ github.run_number }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Linux Binary
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./bin/fst-linux
+        asset_name: fst-linux-amd64
+        asset_content_type: application/octet-stream
+
+    - name: Upload macOS Binary
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./bin/fst-macos
+        asset_name: fst-darwin-amd64
+        asset_content_type: application/octet-stream
+
+    - name: Upload Windows Binary
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./bin/fst-windows.exe
+        asset_name: fst-windows-amd64.exe
+        asset_content_type: application/octet-stream
