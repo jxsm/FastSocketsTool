@@ -35,7 +35,7 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
       with:
         tag_name: v${{ github.run_number }}
         release_name: Release ${{ github.run_number }}
@@ -45,7 +45,7 @@ jobs:
     - name: Upload Linux Binary
       uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./bin/fst-linux
@@ -55,7 +55,7 @@ jobs:
     - name: Upload macOS Binary
       uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./bin/fst-macos
@@ -65,7 +65,7 @@ jobs:
     - name: Upload Windows Binary
       uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./bin/fst-windows.exe
