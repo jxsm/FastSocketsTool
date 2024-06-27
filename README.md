@@ -19,7 +19,7 @@
 
 ---
 ## Introducing
-FastSocketsTool is a Socket utility based on the Go language, offering a range of 
+FastSocketsTool is a Socket utility based on the Golang, offering a range of 
 common Socket functionalities, including the transmission and reception of 
 data, with the added capability to specify encoding methods for both sending and receiving operations.
 
@@ -39,14 +39,23 @@ go mod tidy
 go build cmd/fst.go
 ```
 
-## Use
+## Client
 ```shell
 ./fst -h 127.0.0.1 -p 9000
 ```
-<img src="doc/img/SimpleExample.png" alt="SimpleExample">
+<img src="doc/img/client.png" alt="client">
+
+## Server
+```shell
+./fst -h 127.0.0.1 -p 9000 -s
+```
+<img src="doc/img/server.png" alt="server">
+When operating in server mode, you can input list to view all currently connected clients, and use exit to terminate the server mode.
+
+
 
 ## Parameters
->Server mode is under development and currently only client mode is supported.
+>Server mode currently supports TCP only.
 
 | Parameter | Instructions                                 | Default value |
 |-----------|----------------------------------------------|---------------|

@@ -2,8 +2,8 @@ package client
 
 import (
 	"FastSocketsTool/pkg/option"
+	"FastSocketsTool/pkg/utils"
 	"FastSocketsTool/prompt"
-	"bufio"
 	"fmt"
 	"github.com/zimolab/charsetconv"
 	"net"
@@ -45,7 +45,7 @@ func connect(typeStr string, address string) net.Conn {
 }
 
 func (s *Client) send(message []byte) {
-	encodeString, err := charsetconv.DecodeToString(message, charsetconv.Charset(*s.option.Encode))
+	encodeString, err := charsetconv.DecodeToString(message, charsetconv.Charset(*s.option.SendEncode))
 	if err != nil {
 		prompt.Prompt("the_encoding_conversion_failed")
 		fmt.Println("send(Err):", err)
@@ -57,8 +57,7 @@ func (s *Client) send(message []byte) {
 	}
 }
 
-func (s *Client) monitorServer() ([]byte, error) {
-	dataByte := make([]byte, 1024)
+func (s *Client) monitorServer(dataByte []byte) ([]byte, error) {
 	read, err := s.dial.Read(dataByte)
 	if err != nil {
 		return nil, err
@@ -71,13 +70,11 @@ func (s *Client) monitorUserInput() {
 		s.wg.Done()
 		_ = dial.Close()
 	}(s.dial)
-
 	for {
-		reader := bufio.NewReader(os.Stdin)
-		input, err := reader.ReadString('\n')
+		input, err := utils.UserInput()
 		if err != nil {
 			prompt.Prompt("input_failure")
-			return
+			break
 		}
 		bytesArray := []byte(input)
 		s.send(bytesArray)
@@ -90,20 +87,14 @@ func (s *Client) monitorServerPrint() {
 		s.wg.Done()
 		_ = dial.Close()
 	}(s.dial)
+
+	dataByte := make([]byte, 1024)
 	for {
-		server, err := s.monitorServer()
+		server, err := s.monitorServer(dataByte)
 		if err != nil {
 			os.Exit(1)
 		}
-		encodeString, err := charsetconv.DecodeToString(server, charsetconv.Charset(*s.option.ServerEncode))
-		if err != nil {
-			prompt.Prompt("the_encoding_conversion_failed")
-			fmt.Println("monitorServerPrint(Err):", err)
-			return
-		}
-		fmt.Print("[server]:", encodeString)
-		if server[len(server)-1] != 10 {
-			fmt.Print("\n")
-		}
+		codedPrint := utils.AssignedCodedConversionsF(server, charsetconv.Charset(*s.option.ReceiveEncode))
+		fmt.Print("[server]:", codedPrint)
 	}
 }

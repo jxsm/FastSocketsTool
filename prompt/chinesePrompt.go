@@ -15,6 +15,8 @@ func (c *ChinesePrompt) setPrompt() {
 	c.AddPrompt("the_encoding_conversion_failed", "编码转换失败,该消息不会被发送")
 	c.AddPrompt("send_failure", "发送失败,连接可能断开")
 	c.AddPrompt("input_failure", "获取用户的输入失败")
+	c.AddPrompt("connection_address_is_invalid", "连接地址无效,使用-h指定")
+	c.AddPrompt("unable_to_create_server", "无法创建服务器")
 }
 
 func (c *ChinesePrompt) Prompt(presuppose string) {

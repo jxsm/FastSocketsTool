@@ -1,5 +1,7 @@
 github.com/cloudfoundry/jibber_jabber v0.0.0-20151120183258-bcc4c8345a21 h1:tuijfIjZyjZaHq9xDUh0tNitwXshJpbLkqMOJv4H3do=
 github.com/cloudfoundry/jibber_jabber v0.0.0-20151120183258-bcc4c8345a21/go.mod h1:po7NpZ/QiTKzBKyrsEAxwnTamCoh8uDk/egRpQ7siIc=
+github.com/nathan-fiscaletti/consolesize-go v0.0.0-20220204101620-317176b6684d h1:NqRhLdNVlozULwM1B3VaHhcXYSgrOAv8V5BE65om+1Q=
+github.com/nathan-fiscaletti/consolesize-go v0.0.0-20220204101620-317176b6684d/go.mod h1:cxIIfNMTwff8f/ZvRouvWYF6wOoO7nj99neWSx2q/Es=
 github.com/zimolab/charsetconv v0.1.2 h1:8LVKwx+VEib5E3NneR+OZ0NZocJNYvvRsUuaDOT48r4=
 github.com/zimolab/charsetconv v0.1.2/go.mod h1:SaKwSORcCD1EOeCitC40PpINbm2VLKaXIhChsdWCWPQ=
 golang.org/x/text v0.6.0 h1:3XmdazWV+ubf7QgHSTWeykHOci5oeekaGJBLkrkaw4k=

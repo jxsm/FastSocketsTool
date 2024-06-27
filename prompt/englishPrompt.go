@@ -15,6 +15,9 @@ func (c *EnglishPrompt) setPrompt() {
 	c.AddPrompt("the_encoding_conversion_failed", "Encoding conversion failed, this message will not be sent")
 	c.AddPrompt("send_failure", "Failed to send, connection may be lost")
 	c.AddPrompt("input_failure", "Failed to get user input")
+	c.AddPrompt("connection_address_is_invalid", "The connection address is invalid and specified with -h")
+	c.AddPrompt("unable_to_create_server", "Unable to create server")
+
 }
 
 func (c *EnglishPrompt) Prompt(presuppose string) {

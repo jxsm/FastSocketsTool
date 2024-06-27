@@ -38,13 +38,19 @@ go build cmd/fst.go
 ```
 
 ## 使用
+<img src="../img/client.png" alt="client">
+
+## 服务器模式
 ```shell
-./fst -h 127.0.0.1 -p 9000
+./fst -h 127.0.0.1 -p 9000 -s
 ```
-<img src="../img/SimpleExample.png" alt="SimpleExample">
+<img src="../img/server.png" alt="server">
+
+当你在使用服务器模式时可以输入`list`来查看当前所有连接的客户端,使用`exit`来退出服务器模式
+
 
 ## 参数
-> 服务器模式正在制作中, 目前仅支持客户端模式
+> 服务器模式目前只支持TCP
 
 | 参数  | 说明         | 默认值   |
 |-----|------------|-------|

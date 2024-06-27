@@ -17,5 +17,4 @@ func Start(option *option.OperationOption) {
 		newClient := clientFunc()
 		newClient.Start(option)
 	}
-
 }

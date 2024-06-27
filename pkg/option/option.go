@@ -10,10 +10,11 @@ import (
 type OperationOption struct {
 	ConnectionType    string
 	ConnectionAddress *string
-	Encode            *string
+	SendEncode        *string
 	Port              *int
 	Server            *bool
-	ServerEncode      *string
+	ReceiveEncode     *string
+	V6                *bool
 }
 
 type ExamineOperationOption interface {
@@ -25,12 +26,12 @@ func InitOperationOption() *OperationOption {
 	data := &OperationOption{}
 	b := flag.Bool("u", false, "udp Mod")
 	data.ConnectionType = "tcp"
-
 	data.ConnectionAddress = flag.String("h", "", "Connection address")
-	data.Encode = flag.String("e", "utf-8", " The encoding used at the time of sending")
+	data.SendEncode = flag.String("e", "utf-8", " Text encoding used when sending")
 	data.Port = flag.Int("p", 0, "Port Number - 1 to 65535")
 	data.Server = flag.Bool("s", false, "Server Mode")
-	data.ServerEncode = flag.String("re", "utf-8", "The server-side information will be output through this encoding")
+	data.ReceiveEncode = flag.String("re", "utf-8", "The text encoding used when receiving")
+	data.V6 = flag.Bool("6", false, "IPv6 Address")
 	flag.Parse()
 	if *b {
 		data.ConnectionType = "udp"

@@ -1,6 +1,8 @@
 package option
 
-import "FastSocketsTool/prompt"
+import (
+	"FastSocketsTool/prompt"
+)
 
 type DefaultExamine struct {
 }
