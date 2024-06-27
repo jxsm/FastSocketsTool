@@ -50,9 +50,13 @@ go build cmd/fst.go
 ./fst -h 127.0.0.1 -p 9000 -s
 ```
 <img src="doc/img/server.png" alt="server">
-When operating in server mode, you can input list to view all currently connected clients, and use exit to terminate the server mode.
 
+When operating in server mode, you can input `list` to view all currently connected clients, and use `exit` to terminate the server mode.
 
+By default, in server mode, the data you send is broadcasted to all connected clients, meaning each connected party will receive your transmitted data. However, you have the option to direct your message to a specific client by using the format `ip@content` when inputting your message. For instance:
+```
+127.0.0.1@hello
+```
 
 ## Parameters
 >Server mode currently supports TCP only.
