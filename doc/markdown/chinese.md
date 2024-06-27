@@ -60,3 +60,4 @@ go build cmd/fst.go
 | -re | 指定接收编码方式   | UTF-8 |
 | -u  | udp模式      | false |
 | -s  | 服务器模式      | false |
+| -6  | ipv6模式     | false |

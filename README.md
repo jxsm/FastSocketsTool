@@ -65,3 +65,4 @@ When operating in server mode, you can input list to view all currently connecte
 | -re       | Specify the encoding method for reception.   | UTF-8         |
 | -u        | UDP mode                                     | false         |
 | -s        | Server mode                                  | false         |
+| -6        | ipv6                                         | false         |
