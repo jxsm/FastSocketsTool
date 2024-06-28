@@ -18,7 +18,6 @@ func AssignedCodedDecodeF(data []byte, srcCharset charsetconv.Charset) string {
 }
 
 func AssignedCodedDecode(data []byte, srcCharset charsetconv.Charset) string {
-	fmt.Println("接收使用的编码" + srcCharset)
 	encodeString, err := charsetconv.DecodeToString(data, srcCharset)
 	if err != nil {
 		prompt.Prompt("the_encoding_conversion_failed")
