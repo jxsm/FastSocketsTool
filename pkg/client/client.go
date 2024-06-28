@@ -45,13 +45,8 @@ func connect(typeStr string, address string) net.Conn {
 }
 
 func (s *Client) send(message []byte) {
-	encodeString, err := charsetconv.DecodeToString(message, charsetconv.Charset(*s.option.SendEncode))
-	if err != nil {
-		prompt.Prompt("the_encoding_conversion_failed")
-		fmt.Println("send(Err):", err)
-		return
-	}
-	_, err = s.dial.Write([]byte(encodeString))
+	encodeString := utils.AssignedCodedEncode(string(message), charsetconv.Charset(*s.option.SendEncode))
+	_, err := s.dial.Write([]byte(encodeString))
 	if err != nil {
 		prompt.Prompt("send_failure")
 	}
@@ -94,7 +89,7 @@ func (s *Client) monitorServerPrint() {
 		if err != nil {
 			os.Exit(1)
 		}
-		codedPrint := utils.AssignedCodedConversionsF(server, charsetconv.Charset(*s.option.ReceiveEncode))
+		codedPrint := utils.AssignedCodedDecodeF(server, charsetconv.Charset(*s.option.ReceiveEncode))
 		fmt.Print("[server]:", codedPrint)
 	}
 }

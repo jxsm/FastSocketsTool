@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-func AssignedCodedConversionsF(data []byte, srcCharset charsetconv.Charset) string {
-	encodeString := AssignedCodedConversions(data, srcCharset)
+func AssignedCodedDecodeF(data []byte, srcCharset charsetconv.Charset) string {
+	encodeString := AssignedCodedDecode(data, srcCharset)
 	builder := strings.Builder{}
 	builder.WriteString(encodeString)
 	if data[len(data)-1] != 10 {
@@ -17,12 +17,23 @@ func AssignedCodedConversionsF(data []byte, srcCharset charsetconv.Charset) stri
 	return builder.String()
 }
 
-func AssignedCodedConversions(data []byte, srcCharset charsetconv.Charset) string {
+func AssignedCodedDecode(data []byte, srcCharset charsetconv.Charset) string {
+	fmt.Println("接收使用的编码" + srcCharset)
 	encodeString, err := charsetconv.DecodeToString(data, srcCharset)
 	if err != nil {
 		prompt.Prompt("the_encoding_conversion_failed")
-		fmt.Println("AssignedCodedConversionsF(Err):", err)
+		fmt.Println("AssignedCodedDecode(Err):", err)
 		return string(data)
 	}
 	return encodeString
+}
+
+func AssignedCodedEncode(str string, srcCharset charsetconv.Charset) string {
+	encodeString, err := charsetconv.EncodeString(str, srcCharset)
+	if err != nil {
+		prompt.Prompt("the_encoding_conversion_failed")
+		fmt.Println("AssignedCodedDecodeF(Err):", err)
+		return str
+	}
+	return string(encodeString)
 }

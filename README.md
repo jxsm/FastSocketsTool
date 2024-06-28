@@ -29,13 +29,13 @@ data, with the added capability to specify encoding methods for both sending and
 ```shell
 git clone https://github.com/jxsm/FastSocketsTool.git
 
-// Enter the project directory.
+# Enter the project directory.
 cd FastSocketsTool
 
-// Install dependencies.
+# Install dependencies.
 go mod tidy
 
-// compile
+# compile
 go build cmd/fst.go
 ```
 
@@ -54,8 +54,20 @@ go build cmd/fst.go
 When operating in server mode, you can input `list` to view all currently connected clients, and use `exit` to terminate the server mode.
 
 By default, in server mode, the data you send is broadcasted to all connected clients, meaning each connected party will receive your transmitted data. However, you have the option to direct your message to a specific client by using the format `ip@content` when inputting your message. For instance:
+
 ```
 127.0.0.1@hello
+```
+
+If you need to send commands or special characters like list, exit, or @ to all clients, you can prefix your input with @, for example:
+
+```shell
+# input 
+@@Hello, everyone.
+@list
+# All connected clients will receive it.
+@Hello, everyone.
+list
 ```
 
 ## Parameters

@@ -97,8 +97,9 @@ func (s *TCPServer) listenForConnections(conn *net.TCPConn) {
 		if err != nil {
 			break
 		}
-		codedPrint := utils.AssignedCodedConversionsF(connections, charsetconv.Charset(*s.option.ReceiveEncode))
+		codedPrint := utils.AssignedCodedDecodeF(connections, charsetconv.Charset(*s.option.ReceiveEncode))
 		fmt.Printf("[%s]:%s", getIpConn(conn), codedPrint)
+		fmt.Print(codedPrint)
 	}
 	fmt.Printf("[out]:%s\n", ipConn)
 }
@@ -137,7 +138,7 @@ func (s *TCPServer) preSend(str string) {
 }
 
 func (s *TCPServer) sendAll(message string) {
-	conversions := utils.AssignedCodedConversions([]byte(message), charsetconv.Charset(*s.option.SendEncode))
+	conversions := utils.AssignedCodedEncode(message, charsetconv.Charset(*s.option.SendEncode))
 	var errList []net.Conn
 	fmt.Println("[sendAll]:", message)
 	for _, conn := range s.connectList {
@@ -158,7 +159,7 @@ func (s *TCPServer) sendSpecifiedIp(ip string, message string) {
 		return
 	}
 
-	conversions := utils.AssignedCodedConversions([]byte(message), charsetconv.Charset(*s.option.SendEncode))
+	conversions := utils.AssignedCodedEncode(message, charsetconv.Charset(*s.option.SendEncode))
 	_, err := conn.Write([]byte(conversions))
 	ipConn := getIpConn(conn)
 	if err != nil {

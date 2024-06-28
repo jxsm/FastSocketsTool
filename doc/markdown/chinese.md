@@ -27,13 +27,13 @@ FastSocketsTool 是一个基于Go语言的Socket工具，它提供了一些常�
 ```shell
 git clone https://github.com/jxsm/FastSocketsTool.git
 
-// 进入项目目录
+# 进入项目目录
 cd FastSocketsTool
 
-// 安装依赖
+# 安装依赖
 go mod tidy
 
-// 编译
+# 编译
 go build cmd/fst.go
 ```
 
@@ -50,9 +50,22 @@ go build cmd/fst.go
 
 在默认情况下你在服务器模式下发送的数据是群发的,及每个连接者都可以收到你发送的数据,
 但你可以在输入时使用`ip@内容`来指定发送给指定客户端的数据,例如:
+
 ```
 127.0.0.1@你好
 ```
+
+如果你需要发送如`list`,`exit`,`@`这种标识字符给所有人,则可以在开头输入`@`如:
+
+```shell
+# 输入
+@@大家好
+@list
+# 所有连接者都会收到
+@大家好
+list
+```
+
 
 ## 参数
 > 服务器模式目前只支持TCP
