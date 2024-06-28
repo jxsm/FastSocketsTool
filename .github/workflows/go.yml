@@ -71,3 +71,4 @@ jobs:
         asset_path: ./bin/fst-windows.exe
         asset_name: fst-windows-amd64.exe
         asset_content_type: application/octet-stream
+        
