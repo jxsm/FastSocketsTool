@@ -71,7 +71,7 @@ list
 ```
 
 ## Parameters
->Server mode currently supports TCP only.
+
 
 | Parameter | Instructions                                 | Default value |
 |-----------|----------------------------------------------|---------------|

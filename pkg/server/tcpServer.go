@@ -33,8 +33,8 @@ func (s *TCPServer) Init() {
 	s.connectList = make(map[string]*net.TCPConn)
 	s.operationFunc = make(map[string]func())
 	s.operationFunc["list"] = s.showList
-	s.operationFunc["exit"] = s.exit
-	s.operationFunc["close"] = s.exit
+	s.operationFunc["exit"] = exit
+	s.operationFunc["close"] = exit
 }
 
 func (s *TCPServer) getTCPListener() *net.TCPListener {
@@ -175,7 +175,7 @@ func (s *TCPServer) showList() {
 	}
 }
 
-func (s *TCPServer) exit() {
+func exit() {
 	os.Exit(0)
 }
 

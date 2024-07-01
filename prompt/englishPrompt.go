@@ -17,6 +17,8 @@ func (c *EnglishPrompt) setPrompt() {
 	c.AddPrompt("input_failure", "Failed to get user input")
 	c.AddPrompt("connection_address_is_invalid", "The connection address is invalid and specified with -h")
 	c.AddPrompt("unable_to_create_server", "Unable to create server")
+	c.AddPrompt("invalid_ip_input", "invalid ip input")
+	c.AddPrompt("no_previousConn", "No previous connection available")
 
 }
 

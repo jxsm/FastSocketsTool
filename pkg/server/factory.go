@@ -7,5 +7,5 @@ func NewTcpServer(option *option.OperationOption) IServer {
 }
 
 func NewUdpServer(option *option.OperationOption) IServer {
-	return UdpServer{option}
+	return &UdpServer{option: option}
 }
